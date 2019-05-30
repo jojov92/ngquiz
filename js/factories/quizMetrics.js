@@ -5,7 +5,10 @@
         var quizObj = {
             quizActive: false,
             resultsActive: false,
-            changeState: changeState
+            changeState: changeState,
+            correctAnswers: [],
+            markQuiz: markQuiz,
+            numCorrect: 0
         };
 
         return quizObj;
@@ -19,6 +22,17 @@
                 return false;
             }
             
+        }
+        function markQuiz() {
+            quizObj.correctAnswers = DataService.correctAnswers;
+            for(var i = 0; i < DataService.quiz.quizQuestions.length; i++){
+                if(DataService.quizQuestions[i].selected === DataService.correctAnswers[i]){
+                    DataService.quizQuestions[i].correct = true;
+                    quizObj.numCorrect++;
+                } else {
+                    DataService.quizQuestions[i].correct = false;
+                }
+            }
         }
     }
 
