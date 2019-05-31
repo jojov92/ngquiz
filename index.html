@@ -205,6 +205,12 @@
                     </div>
                 </div> <!--row-->
 
+                <div class="row">
+                    <div class="col-xs-12 top-buffer">
+                        <h2>You Scored {{results.quizMetrics.numCorrect}} / {{results.DataService.quizQuestions.length}}</h2>
+                        <h2><strong>{{results.calculatePerc() | number:2}}%</strong></h2>
+                    </div>
+                </div>
 
                 <div class="row">
                     <h3>Questions:</h3>

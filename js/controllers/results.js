@@ -10,7 +10,17 @@
         vm.quizMetrics = quizMetrics;
         vm.DataService = DataService;
         vm.getAnswerClass = getAnswerClass;
+        vm.setActiveQuestion = setActiveQuestion;
+        vm.calculatePerc = calculatePerc;
         vm.activeQuestion = 0;
+
+        function calculatePerc(){
+            return quizMetrics.numCorrect / DataService.quizQuestions.length * 100;
+        }
+
+        function setActiveQuestion(index) {
+            vm.activeQuestion = index;
+        }
 
 
         /** checking if the index of that point in the loop (index line 216) is equal to the correct answers index and 
