@@ -1,7 +1,9 @@
 (function(){
     angular.module("turtleFacts").factory("quizMetrics", QuizMetrics);
 
-    function QuizMetrics(){
+    QuizMetrics.$inject = ['DataService'];
+
+    function QuizMetrics(DataService){
         var quizObj = {
             quizActive: false,
             resultsActive: false,
@@ -18,6 +20,7 @@
                 quizObj.quizActive = state;
             }else if(metric === "results"){
                 quizObj.resultsActive = state;
+                console.log("hello");
             }else{
                 return false;
             }
@@ -25,7 +28,7 @@
         }
         function markQuiz() {
             quizObj.correctAnswers = DataService.correctAnswers;
-            for(var i = 0; i < DataService.quiz.quizQuestions.length; i++){
+            for(var i = 0; i < DataService.quizQuestions.length; i++){
                 if(DataService.quizQuestions[i].selected === DataService.correctAnswers[i]){
                     DataService.quizQuestions[i].correct = true;
                     quizObj.numCorrect++;
